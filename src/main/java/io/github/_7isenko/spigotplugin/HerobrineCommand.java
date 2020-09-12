@@ -1,17 +1,11 @@
 package io.github._7isenko.spigotplugin;
 
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
-import skinsrestorer.bukkit.SkinsRestorer;
-import skinsrestorer.bukkit.SkinsRestorerBukkitAPI;
 
-import java.util.*;
 
 public class HerobrineCommand implements CommandExecutor {
     private final String tag = "herobrine";
@@ -42,13 +36,11 @@ public class HerobrineCommand implements CommandExecutor {
             if (player != sender)
                 sender.sendMessage(player.getName() + " перестал быть херобрином");
             player.sendMessage("Вы больше не херобрин");
-            // TODO: смена скина
         } else {
             player.addScoreboardTag(tag);
             if (player != sender)
                 sender.sendMessage(player.getName() + " стал херобрином");
             player.sendMessage("Теперь вы херобрин");
-            // TODO: смена скина
         }
 
         return true;
