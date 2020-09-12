@@ -1,10 +1,10 @@
-name: SpigotPlugin
+name: HerobrinePlugin
 version: "1.0"
 api-version: "1.12"
 author: 7isenko
-main: io.github._7isenko.spigotplugin.SpigotPlugin
+main: io.github._7isenko.spigotplugin.HerobrinePlugin
 commands:
-  sea:
+  herobrine:
     description: do business
     usage: /command <nickname>
     permission: op

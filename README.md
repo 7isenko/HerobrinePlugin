@@ -1,1 +1,1 @@
-### SpigotPlugin
+### HerobrinePlugin

@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.7isenko</groupId>
-    <artifactId>SpigotPlugin</artifactId>
-    <version>RELEASE</version>
+    <artifactId>HerobrinePlugin</artifactId>
+    <version>1.0</version>
     <build>
         <plugins>
             <plugin>
