@@ -1,0 +1,10 @@
+name: SpigotPlugin
+version: "1.0"
+api-version: "1.12"
+author: 7isenko
+main: io.github._7isenko.spigotplugin.SpigotPlugin
+commands:
+  sea:
+    description: do business
+    usage: /command <nickname>
+    permission: op
