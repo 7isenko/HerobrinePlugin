@@ -9,4 +9,5 @@ public abstract class PlayerAbility implements Ability {
     public PlayerAbility(Player player) {
         this.player = player;
     }
+
 }

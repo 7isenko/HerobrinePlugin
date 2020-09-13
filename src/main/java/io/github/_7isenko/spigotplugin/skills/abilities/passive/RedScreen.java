@@ -1,33 +1,30 @@
-package io.github._7isenko.spigotplugin.skills.abilities;
+package io.github._7isenko.spigotplugin.skills.abilities.passive;
 
-import io.github._7isenko.spigotplugin.skills.abstracts.EntityAbility;
-import io.github._7isenko.spigotplugin.skills.abstracts.Passive;
-import io.github._7isenko.spigotplugin.skills.abstracts.PlayerAbility;
+import io.github._7isenko.spigotplugin.skills.abstracts.PassiveAbility;
 import net.minecraft.server.v1_12_R1.EntityPlayer;
 import net.minecraft.server.v1_12_R1.PacketPlayOutWorldBorder;
 import net.minecraft.server.v1_12_R1.WorldBorder;
 import org.bukkit.craftbukkit.v1_12_R1.entity.CraftPlayer;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 
 import java.lang.reflect.Field;
 
-public class RedScreen extends EntityAbility implements Passive {
-    public RedScreen(Entity herobrine) {
+public class RedScreen extends PassiveAbility {
+    public RedScreen(Player herobrine) {
         super(herobrine);
     }
 
     @Override
     public void cast() {
-        entity.getNearbyEntities(16, 16, 16).forEach(p -> {
+        player.getNearbyEntities(16, 16, 16).forEach(p -> {
             if (p instanceof Player) {
-                sendWorldBorderPacket((Player) p, (int) entity.getLocation().distance(p.getLocation()));
+                sendWorldBorderPacket((Player) p, (int) player.getLocation().distance(p.getLocation()));
             }
         });
     }
 
     public void cancel() {
-        entity.getNearbyEntities(30, 30, 30).forEach(p -> {
+        player.getNearbyEntities(30, 30, 30).forEach(p -> {
             if (p instanceof Player) {
                 sendWorldBorderPacket((Player) p, 1000);
             }

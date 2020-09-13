@@ -1,5 +1,6 @@
 package io.github._7isenko.spigotplugin;
 
+import io.github._7isenko.spigotplugin.skills.AbilitiesManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -33,15 +34,17 @@ public class HerobrineCommand implements CommandExecutor {
 
         if (player.getScoreboardTags().contains(tag)) {
             player.removeScoreboardTag(tag);
-            if (player != sender)
+            if (player != sender) {
                 sender.sendMessage(player.getName() + " перестал быть херобрином");
-            // TODO: business
+                AbilitiesManager.getInstance().removeAll(player);
+            }
             player.sendMessage("Вы больше не херобрин");
         } else {
             player.addScoreboardTag(tag);
-            if (player != sender)
+            if (player != sender) {
                 sender.sendMessage(player.getName() + " стал херобрином");
-            // TODO: business
+                AbilitiesManager.getInstance().addAll(player);
+            }
             player.sendMessage("Теперь вы херобрин");
         }
 

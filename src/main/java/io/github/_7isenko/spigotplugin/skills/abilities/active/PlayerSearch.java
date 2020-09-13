@@ -1,4 +1,4 @@
-package io.github._7isenko.spigotplugin.skills.abilities;
+package io.github._7isenko.spigotplugin.skills.abilities.active;
 
 import io.github._7isenko.spigotplugin.HerobrinePlugin;
 import io.github._7isenko.spigotplugin.skills.abstracts.EntityAbility;

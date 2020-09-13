@@ -1,6 +1,6 @@
 package io.github._7isenko.spigotplugin;
 
-import io.github._7isenko.spigotplugin.skills.abilities.PlayerSearch;
+import io.github._7isenko.spigotplugin.skills.abilities.active.PlayerSearch;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
