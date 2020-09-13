@@ -13,6 +13,8 @@ public class HerobrinePlugin extends JavaPlugin {
     public void onEnable() {
         plugin = this;
         this.getCommand("herobrine").setExecutor(new HerobrineCommand());
+        getServer().getPluginManager().registerEvents(new JoinListener(), this);
+        getServer().getPluginManager().registerEvents(new AbilityCastListener(), this);
     }
 
     @Override

@@ -26,6 +26,14 @@ public class RedScreen extends EntityAbility implements Passive {
         });
     }
 
+    public void cancel() {
+        entity.getNearbyEntities(30, 30, 30).forEach(p -> {
+            if (p instanceof Player) {
+                sendWorldBorderPacket((Player) p, 1000);
+            }
+        });
+    }
+
     protected void sendWorldBorderPacket(Player player, int warningBlocks) {
         EntityPlayer nmsPlayer = ((CraftPlayer) player).getHandle();
         WorldBorder playerWorldBorder = nmsPlayer.world.getWorldBorder();

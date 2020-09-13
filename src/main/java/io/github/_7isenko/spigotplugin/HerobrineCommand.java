@@ -35,11 +35,13 @@ public class HerobrineCommand implements CommandExecutor {
             player.removeScoreboardTag(tag);
             if (player != sender)
                 sender.sendMessage(player.getName() + " перестал быть херобрином");
+            // TODO: business
             player.sendMessage("Вы больше не херобрин");
         } else {
             player.addScoreboardTag(tag);
             if (player != sender)
                 sender.sendMessage(player.getName() + " стал херобрином");
+            // TODO: business
             player.sendMessage("Теперь вы херобрин");
         }
 
