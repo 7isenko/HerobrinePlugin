@@ -28,7 +28,7 @@ public class YouCantSeeMee extends PassiveAbility {
     @Override
     public void cast() {
         if (!getEntities(player).isEmpty())
-            player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100, 1, true, false));
+            player.addPotionEffect(new PotionEffect(PotionEffectType.INVISIBILITY, 100, 1, true, false), true);
     }
 
     private Set<Player> getEntities(Player player) {
