@@ -3,6 +3,7 @@ package io.github._7isenko.spigotplugin.skills;
 import io.github._7isenko.spigotplugin.HerobrinePlugin;
 import io.github._7isenko.spigotplugin.skills.abilities.passive.RedScreen;
 import io.github._7isenko.spigotplugin.skills.abilities.passive.SmokyFloor;
+import io.github._7isenko.spigotplugin.skills.abilities.passive.YouCantSeeMee;
 import io.github._7isenko.spigotplugin.skills.abstracts.PassiveAbility;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -17,7 +18,7 @@ public class AbilitiesManager {
     private AbilitiesManager() {
         passives = new HashMap<>();
         task = new PassivesRunnable();
-        task.runTaskTimerAsynchronously(HerobrinePlugin.plugin, 0, 1);
+        task.runTaskTimer(HerobrinePlugin.plugin, 0, 1);
     }
 
     public void addPassive(Class<? extends PassiveAbility> passiveClass, Player player) {
@@ -65,6 +66,7 @@ public class AbilitiesManager {
     public void addAll(Player player) {
         addPassive(RedScreen.class, player);
         addPassive(SmokyFloor.class, player);
+        addPassive(YouCantSeeMee.class, player);
     }
 
     public class PassivesRunnable extends BukkitRunnable {

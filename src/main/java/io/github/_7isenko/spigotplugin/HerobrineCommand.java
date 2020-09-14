@@ -34,16 +34,16 @@ public class HerobrineCommand implements CommandExecutor {
 
         if (player.getScoreboardTags().contains(tag)) {
             player.removeScoreboardTag(tag);
+            AbilitiesManager.getInstance().removeAll(player);
             if (player != sender) {
                 sender.sendMessage(player.getName() + " перестал быть херобрином");
-                AbilitiesManager.getInstance().removeAll(player);
             }
             player.sendMessage("Вы больше не херобрин");
         } else {
             player.addScoreboardTag(tag);
+            AbilitiesManager.getInstance().addAll(player);
             if (player != sender) {
                 sender.sendMessage(player.getName() + " стал херобрином");
-                AbilitiesManager.getInstance().addAll(player);
             }
             player.sendMessage("Теперь вы херобрин");
         }

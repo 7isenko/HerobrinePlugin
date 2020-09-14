@@ -16,17 +16,19 @@ public class RedScreen extends PassiveAbility {
 
     @Override
     public void cast() {
-        player.getNearbyEntities(16, 16, 16).forEach(p -> {
+        player.getNearbyEntities(32, 32, 32).forEach(p -> {
             if (p instanceof Player) {
-                sendWorldBorderPacket((Player) p, (int) player.getLocation().distance(p.getLocation()));
+                if (player.getLocation().distance(p.getLocation()) < 15)
+                    sendWorldBorderPacket((Player) p, 300_000);
+                else sendWorldBorderPacket((Player) p, 1);
             }
         });
     }
 
     public void cancel() {
-        player.getNearbyEntities(30, 30, 30).forEach(p -> {
+        player.getNearbyEntities(100, 100, 100).forEach(p -> {
             if (p instanceof Player) {
-                sendWorldBorderPacket((Player) p, 1000);
+                sendWorldBorderPacket((Player) p, 1);
             }
         });
     }
@@ -45,4 +47,20 @@ public class RedScreen extends PassiveAbility {
         }
         nmsPlayer.playerConnection.sendPacket(worldBorder);
     }
+
+    /*
+        CraftPlayer cp = (CraftPlayer) p;
+
+        // to add
+        WorldBorder w = new WorldBorder();
+        w.setSize(1);
+        w.setCenter(p.getLocation().getX() + 10_000, p.getLocation().getZ() + 10_000);
+        cp.getHandle().playerConnection.sendPacket(new PacketPlayOutWorldBorder(w, PacketPlayOutWorldBorder.EnumWorldBorderAction.INITIALIZE));
+
+        // to remove
+        WorldBorder ww = new WorldBorder();
+        ww.setSize(30_000_000);
+        ww.setCenter(p.getLocation().getX(), p.getLocation().getZ());
+        cp.getHandle().playerConnection.sendPacket(new PacketPlayOutWorldBorder(ww, PacketPlayOutWorldBorder.EnumWorldBorderAction.INITIALIZE));
+     */
 }

@@ -54,7 +54,7 @@ public class PlayerSearch extends EntityAbility {
                 }
                 laserMap.forEach((e, l) -> {
                     try {
-                        if (e != null && !e.isDead() && e.isOnline() && e.getGameMode() != GameMode.SPECTATOR && e.getGameMode() != GameMode.CREATIVE) {
+                        if (e != null && e.isValid() && e.isOnline() && e.getGameMode() != GameMode.SPECTATOR && e.getGameMode() != GameMode.CREATIVE) {
                             l.moveEnd(e.getLocation().clone());
                         } else {
                             if (l.isStarted())
