@@ -20,13 +20,19 @@ public class BlindCircle extends LocationAbility {
             Iterator<Map.Entry<LivingEntity, Integer>> iterator = affected.entrySet().iterator();
             while (iterator.hasNext()) {
                 Map.Entry<LivingEntity, Integer> entry = iterator.next();
-                entry.getKey().getWorld().spawnParticle(Particle.SMOKE_NORMAL, entry.getKey().getEyeLocation().add(0,1,0), 1, 0.1, 0.1, 0.1, 0.002);
-                int val = entry.getValue() - 1;
-                if (val <= 0) iterator.remove();
-                else entry.setValue(val);
+                if (entry.getKey().isValid()) {
+                    entry.getKey().getWorld().spawnParticle(Particle.SMOKE_NORMAL, entry.getKey().getEyeLocation().add(0, 1, 0), 1, 0.1, 0.1, 0.1, 0.002);
+                    int val = entry.getValue() - 1;
+                    if (val <= 0) iterator.remove();
+                    else entry.setValue(val);
+                } else {
+                    iterator.remove();
+                }
+
             }
         }
     };
+
     static {
         task.runTaskTimer(HerobrinePlugin.plugin, 0, 1);
     }
@@ -37,7 +43,7 @@ public class BlindCircle extends LocationAbility {
 
     @Override
     public void cast() {
-        Geometry.getGroundedRing(location.add(0, 2, 0), 15, 200).forEach(location1 -> {
+        Geometry.getGroundedRing(location.add(0, 1, 0), 15, 200).forEach(location1 -> {
             location1.getWorld().spawnParticle(Particle.DRAGON_BREATH, location1, 2, 0, 0.1, 0, 0.05);
         });
         Geometry.getGroundedCircle(location.add(0, 2, 0), 15).forEach(l -> {
@@ -45,7 +51,7 @@ public class BlindCircle extends LocationAbility {
                 if (entity instanceof LivingEntity && !entity.getScoreboardTags().contains("herobrine")) {
                     ((LivingEntity) entity).addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS, 500, 1, true));
                     affected.put((LivingEntity) entity, 500);
-                    Geometry.getRing(entity.getLocation().add(0,1,0), 2, 50).forEach(loc -> {
+                    Geometry.getRing(entity.getLocation().add(0, 1, 0), 2, 50).forEach(loc -> {
                         loc.getWorld().spawnParticle(Particle.DRIP_LAVA, loc, 1, 0, 0.05, 0);
                     });
                 }

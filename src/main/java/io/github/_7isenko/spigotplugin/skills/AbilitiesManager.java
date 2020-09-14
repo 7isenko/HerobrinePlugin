@@ -46,9 +46,11 @@ public class AbilitiesManager {
      */
     public boolean switchPassive(Class<? extends PassiveAbility> passiveClass, Player player) {
         if (removePassive(passiveClass, player)) {
+            player.sendMessage("Пассивная способность " + passiveClass.getSimpleName() + " отключена");
             return false;
         } else {
             addPassive(passiveClass, player);
+            player.sendMessage("Пассивная способность " + passiveClass.getSimpleName() + " включена");
             return true;
         }
     }
